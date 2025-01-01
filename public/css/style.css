@@ -1,22 +1,19 @@
 body {
-    background-color: bisque;
-    background-image: url('https://t4.ftcdn.net/jpg/02/71/50/69/360_F_271506927_WWFfd92jDIIDx6DgMflakU14o5jRPgBm.jpg');
-    background-size: cover;
-
+  background-color: bisque;
+  background-image: url("https://t4.ftcdn.net/jpg/02/71/50/69/360_F_271506927_WWFfd92jDIIDx6DgMflakU14o5jRPgBm.jpg");
+  background-size: cover;
 }
-h1{
-    color: brown;
+h1 {
+  color: brown;
 }
-p{
-    background-color: aqua;
-}
-
-form{
-    
-    padding: 5%;
-    border: 2px solid rgb(226, 25, 126);
-    background-color: pink;
-    margin-left: 20%;
-    margin-right: 20%;
+p {
+  background-color: aqua;
 }
 
+form {
+  padding: 5%;
+  border: 2px solid rgb(226, 25, 126);
+  background-color: pink;
+  margin-left: 20%;
+  margin-right: 20%;
+}

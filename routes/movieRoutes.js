@@ -8,8 +8,7 @@ router.use(express.urlencoded({ extended: true }));
 
 const movieModel = require("../model/movieData");
 
-
-function movieroutes(nav){
+function movieroutes(nav) {
   //get
   router.get("/", async (req, res) => {
     try {
@@ -25,14 +24,12 @@ function movieroutes(nav){
     }
   });
 
-  //this route addform url is given to the link 
+  //this route addform url is given to the link
   router.get("/addform", (req, res) => {
     res.render("form", {
-    
-      nav
+      nav,
     });
   });
-
 
   //post
   router.post("/addmovie", async (req, res) => {
@@ -40,21 +37,20 @@ function movieroutes(nav){
       var item = req.body;
       const data = new movieModel(item); //item is embedded  and the data into the created instance of schema
       await data.save();
-      res.redirect('/movies')
+      res.redirect("/movies");
     } catch (error) {
       res.status(404).send("post unsuccessful");
     }
   });
 
-router.get('/updatepage/:id', async(req,res)=>{
-  const data = await movieModel.findOne({"_id": req.params.id})
-  res.render('updateform',{
-    nav,
-    data,
-    movieid:req.params.id
-  })
-})
-
+  router.get("/updatepage/:id", async (req, res) => {
+    const data = await movieModel.findOne({ _id: req.params.id });
+    res.render("updateform", {
+      nav,
+      data,
+      movieid: req.params.id,
+    });
+  });
 
   //update(put changed in to post)
   router.post("/edit/:id", async (req, res) => {
@@ -82,5 +78,3 @@ router.get('/updatepage/:id', async(req,res)=>{
 }
 
 module.exports = movieroutes;
-
-
