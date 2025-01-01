@@ -10,30 +10,29 @@ const movieModel = require("../model/movieData");
 
 
 function movieroutes(nav){
-
- 
-
-  // router.get("/form", (req, res) => {
-  //   res.render("form", {
-  //     nav,
-  //   });
-  // });
-
-
   //get
   router.get("/", async (req, res) => {
     try {
-      const data = await movieModel.find();//fetching data from db
-     res.render('home',{//home - ejs file
-      title:'Cards',
-      data,//data fetched from the db
-      nav
-
-     })
+      const data = await movieModel.find(); //fetching data from db
+      res.render("home", {
+        //home - ejs file
+        title: "Cards",
+        data, //data fetched from the db
+        nav,
+      });
     } catch (error) {
       res.status(404).send("Data not foound");
     }
   });
+
+  //this route addform url is given to the link 
+  router.get("/addform", (req, res) => {
+    res.render("form", {
+    
+      nav
+    });
+  });
+
 
   //post
   router.post("/addmovie", async (req, res) => {
@@ -41,17 +40,27 @@ function movieroutes(nav){
       var item = req.body;
       const data = new movieModel(item); //item is embedded  and the data into the created instance of schema
       await data.save();
-      res.status(200).send("post successful");
+      res.redirect('/movies')
     } catch (error) {
       res.status(404).send("post unsuccessful");
     }
   });
 
-  //update
-  router.put("/edit/:id", async (req, res) => {
+router.get('/updatepage/:id', async(req,res)=>{
+  const data = await movieModel.findOne({"_id": req.params.id})
+  res.render('updateform',{
+    nav,
+    data,
+    movieid:req.params.id
+  })
+})
+
+
+  //update(put changed in to post)
+  router.post("/edit/:id", async (req, res) => {
     try {
       const data = await movieModel.findByIdAndUpdate(req.params.id, req.body);
-      res.status(200).send("Update Successful");
+      res.redirect("/movies");
     } catch (error) {
       res.status(404).send("Update UnSuccessful");
     }
@@ -68,7 +77,6 @@ function movieroutes(nav){
       res.status(404).send("Delete Unsuccessful");
     }
   });
-
 
   return router;
 }

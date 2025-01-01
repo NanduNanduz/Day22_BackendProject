@@ -12,7 +12,7 @@ require('./db/connection');
 
 const nav = [
   { link: "/movies", name: "Home" },
-  { link: "/movies/form", name: "Add Movies" },
+  { link: "/movies/addform", name: "Add Movies" },
 ];
 
 const movieRoutes = require('./routes/movieRoutes')(nav);
@@ -24,8 +24,6 @@ app.set("view engine", "ejs"); //(instead if require ejs)node viewengines are pu
 app.set("views", __dirname + "/views");//path to the folder which contain ejs
 
 app.use(express.static("public"));
-
-
 
 
 //Accessing post num from .env file process.env.variablename

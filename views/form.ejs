@@ -27,14 +27,14 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="#">Movies</a>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- <%for(let i=0; i<nav.length;i++){%> -->
+                    <%for(let i=0; i<nav.length;i++){%>
 
                         <li class="nav-item">
-                            <!-- <a class="nav-link active" aria-current="page" href="<%=nav[i].link%>"> -->
-                                <!-- <%=nav[i].name%> -->
+                            <a class="nav-link active" aria-current="page" href="<%=nav[i].link%>">
+                                <%=nav[i].name%>
                             </a>
                         </li>
-                        <!-- <%}%> -->
+                        <%}%>
                 </ul>
 
             </div>
@@ -42,7 +42,7 @@
     </nav>
 
 
-    <form class="mt-5" method="post" action="/movies/addmovie">
+    <form class="mt-5" method="post" action="/movies/addmovie/<%=data[i]._id%>">
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Movie Name</label>
