@@ -20,7 +20,7 @@ function movieroutes(nav) {
         nav,
       });
     } catch (error) {
-      res.status(404).send("Data not foound");
+      res.status(404).send("Data not found");
     }
   });
 
